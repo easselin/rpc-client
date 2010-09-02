@@ -1,0 +1,33 @@
+#summary One-sentence summary of this page.
+#labels Phase-Support
+
+= Introduction =
+
+The tool is designed to make, in command line, easily XML-RPC packet to a remote server.
+
+- Author =
+
+The author of tool is Daniel Garcia (dani@iniqua.com), Security auditor and contributor of www.iniqua.com
+
+= Quick questions about XML-RPC =
+
+A few quick questions:
+
+* Q: What is XML-RPC and is good for?
+* A: Is a way to communicate with remote systems and ask them to do something and send us the results. For example: You could ask the server 'X' that calculates the sum of two very large and we return the result.
+
+* Q: ¿Who uses it?
+* A: Wordpress or Drupal are two examples.
+
+* Q: To be used?
+* A: To provide some functionality such as: Consultation statistics, remote access by mobile phone, remote configuration ...
+
+* Q: What I can assert to me this tool?
+* A: Depends on the use of it. We could serve to perform certain exploits, extracting information from the service or, if you're a developer, test your Web service.
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages

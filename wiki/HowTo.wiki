@@ -13,23 +13,62 @@ The author of tool is Daniel Garcia (dani@iniqua.com), Security auditor and cont
 
 A few quick questions:
 
-* Q: What is XML-RPC and is good for?
+  * Q: What is XML-RPC and is good for?
+  * A: Is a way to communicate with remote systems and ask them to do something and send us the results. For example: You could ask the server 'X' that calculates the sum of two very large and we return the result.
 
-* A: Is a way to communicate with remote systems and ask them to do something and send us the results. For example: You could ask the server 'X' that calculates the sum of two very large and we return the result.
+  * Q: ¿Who uses it?
+  * A: Wordpress or Drupal are two examples.
 
-* Q: ¿Who uses it?
+  * Q: To be used?
+  * A: To provide some functionality such as: Consultation statistics, remote access by mobile phone, remote configuration ...
 
-* A: Wordpress or Drupal are two examples.
+  * Q: What I can assert to me this tool?
+  * A: Depends on the use of it. We could serve to perform certain exploits, extracting information from the service or, if you're a developer, test your Web service.
 
-* Q: To be used?
-* A: To provide some functionality such as: Consultation statistics, remote access by mobile phone, remote configuration ...
+= Funcionality =
 
-* Q: What I can assert to me this tool?
-* A: Depends on the use of it. We could serve to perform certain exploits, extracting information from the service or, if you're a developer, test your Web service.
+This tool allows you to communicate with an XML-RPC service and built packages as custom as you want.
 
-= Details =
+Tool have several options:
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+===Required options===
+  * -t: Target. This parameters indicate URL where service is running: {{{http://www.vulnerablesite.com/xmlrpc.php}}}
+  * -M: Method. Remote method or function that you want to call. In the example of the sum of numbers it can be: SumBigNumbers.
+  * -P: Parameters. Explained below.
+
+===Global Options===
+  * -h: show help dialog.
+  * -v: Set verbose mode on. With this option activated, the program will show package before sending.
+  * -u: User name for web server.
+  * -p: Password.
+
+----
+
+===Parameters: How it works.===
+
+There are several types of parameters, according to specification. It can be found at http://en.wikipedia.org/wiki/XML-RPC.
+
+According to type parameters are expressed in one form or another:
+
+*All but, array and struct types:* 
+
+In this case syntax are: type1@value1!type2@value2!...!typeN@valueN. Type and value are a indivisible tuple, united by '@'. Separator between tuples are '!' symbol. For example:
+
+_-P integer @12!String@string_
+
+*Array type:* 
+
+Array type may have several values inside. These values are in pairs or tuples. Each pair is separated by '#' symbol. Each tuple are splitted by '%' symbol. Example:
+
+_-P array@type1#value1%type1#value2%...%typeN#valueN_
+
+*Struct type:* 
+
+Similar to array, but with 3 params for tuple. Each tuple must be member name, value and type of value. Syntax is equal to array but the tuple has a length of 3. Example:
+_-P struct@name1#type1#value1%...%nameN#typeN#valueN
+
+*Custom type:*
+
+
+
+Existe un último tipo, llamado custom, que como su nombre indica nos permite crear parámetros a nuestro gusto. There is one last type, called custom, which as its name suggests allows you to create parameters to our liking. Su sintaxis es parecida a la anterior: custom@NonExistType1#value1% NonExistType2#value2. Its syntax is similar to the previous: @ NonExistType1 custom NonExistType2 # # value1% value2. Esto nos produciría el siguiente código XML: This will produce the following XML: 
